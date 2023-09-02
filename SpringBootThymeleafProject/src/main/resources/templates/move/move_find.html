@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.LED-container {
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+
+  width: 400px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 28px;
+
+  background-color: black;
+  color: red;
+}
+
+@keyframes scrolling {
+  0% {
+    left: 100%;
+  }
+  100% {
+    transform: translate(-100%);
+  }
+}
+
+.testing-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  
+  white-space: nowrap;
+  
+  animation: 5s linear infinite scrolling;
+}
+</style>
+</head>
+
+<body>
+
+<main class="main-content" style="height: 1500px">
+				<div class="container">
+					<div class="page">
+						<div class="breadcrumbs">
+							<a href="/">Home</a>
+							<span>Move Find</span><div style="height: 10px"></div>
+							<form action="/move/move_find" class="search-form" method="post">
+							<input type="text" placeholder="Search..." name="fd">
+							<button><i class="fa fa-search"></i></button>
+						</form>
+						</div>
+						<div style="height: 20px"></div>
+						<div class="LED-container">
+						  <div class="testing-content text-center" th:text="${fd}+' 검색결과'"></div>
+						</div>
+						<div style="height: 20px"></div>
+						
+							<!-- <select name="#" id="#" placeholder="Choose Category">
+								<option value="#">아파트</option>
+								<option value="#">오피스텔</option>
+								<option value="#">분양권</option>
+								<option value="#">주택</option>
+								<option value="#">원룸</option>
+								<option value="#">상가</option>
+								<option value="#">사무실</option>
+							</select> -->
+						<div class="movie-list">
+							<div class="movie" th:each="vo:${list}">
+								<figure class="movie-poster"><img th:src="${vo.poster}" alt="#" style="width:203px; height:203px; "></figure>
+								<div class="movie-title"><a href="#"></a></div>
+								<p ></p>
+							</div>
+						</div> <!-- .movie-list -->
+						<div style="height: 30px"></div>
+						<div class="pagination">
+							<a th:if="${startPage>1}"class="page-number prev" th:href="@{/move/move_find(page=${startPage-1},fd=${fd})}"><i class="fa fa-angle-left"></i></a>
+							<!-- page-number -->
+							<a th:each="i:${#numbers.sequence(startPage,endPage)}" th:class="${curpage==i?'page-number current':'page-number'}" th:text=${i} th:href="@{/move/move_find(page=${i},fd=${fd})}"></a>
+							<a th:if="${totalpage>endPage}"th:href="@{/move/move_find(page=${endPage+1},fd=${fd})}"class="page-number next"><i class="fa fa-angle-right"></i></a>
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>		
+</body>
+</html>

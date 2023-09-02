@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<main class="main-content" style="height: 1500px">
+				<div class="container">
+					<div class="page">
+						<div class="breadcrumbs">
+							<a href="/">Home</a>
+							<span>Estate List</span>
+						</div>
+							<!-- <select name="#" id="#" placeholder="Choose Category">
+								<option value="#">아파트</option>
+								<option value="#">오피스텔</option>
+								<option value="#">분양권</option>
+								<option value="#">주택</option>
+								<option value="#">원룸</option>
+								<option value="#">상가</option>
+								<option value="#">사무실</option>
+							</select> -->
+							<ul class="nav nav-tabs">
+							  <li><a th:href="@{/estate/estate_list(page=1,etype=1)}">아파트</a></li>
+							  <li><a th:href="@{/estate/estate_list(page=1,etype=2)}">오피스텔</a></li>
+							  <li><a th:href="@{/estate/estate_list(page=1,etype=3)}">분양권</a></li>
+							  <li><a th:href="@{/estate/estate_list(page=1,etype=4)}">주택</a></li>
+							  <li><a th:href="@{/estate/estate_list(page=1,etype=5)}">원룸</a></li>
+							  <li><a th:href="@{/estate/estate_list(page=1,etype=6)}">상가</a></li>
+							  <li><a th:href="@{/estate/estate_list(page=1,etype=7)}">사무실</a></li>
+							</ul>
+						<div class="movie-list">
+							<div class="movie" th:each="vo:${list}">
+								<figure class="movie-poster"><img th:src="${vo.img}" alt="#"></figure>
+								<div class="movie-title"><a href="single.html" th:text="${vo.name}"></a></div>
+								<p th:text="${vo.addr}"></p>
+							</div>
+						</div> <!-- .movie-list -->
+
+						<div class="pagination text-center">
+							<a th:if="${startPage>1}" th:href="@{/estate/estate_list(page=${startPage-1},etype=${etype})}" class="page-number prev"><i class="fa fa-angle-left"></i></a>
+							<!-- page-number -->
+							<a th:href="@{/estate/estate_list(page=${i},etype=${etype})}" th:class="${curpage==i?'page-number current':'page-number'}" th:each="i:${#numbers.sequence(startPage,endPage)}" th:text="${i}"></a>
+							<a th:if="${totalpage>endPage}" th:href="@{/estate/estate_list(page=${endPage+1},etype=${etype})}" class="page-number next"><i class="fa fa-angle-right"></i></a>
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>		
+</body>
+</html>

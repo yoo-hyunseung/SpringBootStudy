@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" />
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<main class="main-content">
+				<div class="container">
+					<div class="page">
+						<div class="row">
+						<h2>믿고 보는 부동산 매물</h2>
+							<div class="col-md-9">
+								<a href="#"><img th:src="${list[0].img}" style="height: 450px;width: 100%;" class="img-rounded"></a>
+							</div>
+							<div class="col-md-3">
+								<div class="row">
+									<div class="col-sm-6 col-md-12">
+										<div class="latest-movie">
+											<a href="#"><img th:src="${list[1].img}" alt="Movie 1"></a>
+										</div>
+									</div>
+									<div class="col-sm-6 col-md-12">
+										<div class="latest-movie">
+											<a href="#"><img th:src="${list[2].img}" alt="Movie 2"></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> <!-- .row -->
+						<div class="row">
+							<div class="col-sm-6 col-md-3">
+								<div class="latest-movie">
+									<a href="#"><img th:src="${list[3].img}" alt="Movie 3"></a>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="latest-movie">
+									<a href="#"><img th:src="${list[4].img}" alt="Movie 4"></a>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="latest-movie">
+									<a href="#"><img th:src="${list[5].img}" alt="Movie 5"></a>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-3">
+								<div class="latest-movie">
+									<a href="#"><img th:src="${list[6].img}" alt="Movie 6"></a>
+								</div>
+							</div>
+						</div> <!-- .row -->
+						
+						<div class="row">
+							<h2>부동산 매매 구분</h2>
+							<div class="col-md-4">
+								<h2 class="section-title">매매</h2>
+								<ul class="movie-schedule">
+									<li th:each="mvo:${mList}">
+										<div class="date" th:text="${mvo.type}"></div>
+										<h2 class="entry-title"><a href="#" th:text="${mvo.name}"></a></h2>
+									</li>
+								</ul> <!-- .movie-schedule -->
+							</div>
+							<div class="col-md-4">
+								<h2 class="section-title">전세</h2>
+								<ul class="movie-schedule">
+									<li th:each="jvo:${jList}">
+										<div class="date" th:text="${jvo.type}"></div>
+										<h2 class="entry-title"><a href="#" th:text="${jvo.name}"></a></h2>
+									</li>
+								</ul>
+								 <!-- .movie-schedule -->
+							</div>
+							<div class="col-md-4">
+								<h2 class="section-title">월세</h2>
+								<ul class="movie-schedule">
+									<li th:each="wvo:${wList}">
+										<div class="date" th:text="${wvo.type}"></div>
+										<h2 class="entry-title"><a href="#" th:text="${wvo.name}"></a></h2>
+									</li>
+								</ul>
+								 <!-- .movie-schedule -->
+							</div>
+						</div>
+					</div>
+				</div> <!-- .container -->
+			</main>
+</body>
+</html>
